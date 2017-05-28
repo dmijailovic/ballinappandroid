@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ballinapp.com.ballinapp.team.Players"
+    android:background="@drawable/update_team_wp">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/add_players_button"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:id="@+id/players_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_alignParentBottom="true">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/players_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/players_tv_list"
+        android:contentDescription="@string/players"/>
+
+    <ImageButton
+        android:id="@+id/add_players_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@android:color/transparent"
+        android:onClick="addPlayer"
+        app:srcCompat="@drawable/add_player"
+        android:contentDescription="@string/find_image_button"/>
+
+</RelativeLayout>

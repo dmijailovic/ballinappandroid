@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/update_team_wp"
+    tools:context="ballinapp.com.ballinapp.search.GameSearch">
+
+    <TextView
+        android:id="@+id/enter_city_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_30sdp"
+        android:text="@string/enter_city" />
+
+    <EditText
+        android:id="@+id/enter_city_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enter_city_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_42sdp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/search_games_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enter_city_et"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:background="@android:color/transparent"
+        android:onClick="search"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/search_button"
+        android:contentDescription="@string/find_image_button" />
+</RelativeLayout>

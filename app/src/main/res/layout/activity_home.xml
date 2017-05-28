@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_wp"
+    android:orientation="vertical"
+    tools:context="ballinapp.com.ballinapp.HomeActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ballinapp"
+        android:contentDescription="@string/logo"/>
+
+    <ImageButton
+        android:id="@+id/profile_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        app:srcCompat="@drawable/profile"
+        android:onClick="profile"
+        android:background="@android:color/transparent"
+        android:scaleType="fitStart"
+        android:contentDescription="@string/profile_img_btn"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"/>
+
+    <ImageButton
+        android:id="@+id/requests_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        android:onClick="requests"
+        app:srcCompat="@drawable/requests"
+        android:background="@android:color/transparent"
+        android:scaleType="fitStart"
+        android:contentDescription="@string/requests_img_btn"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"/>
+
+    <ImageButton
+        android:id="@+id/find_teams_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        android:onClick="findTeams"
+        app:srcCompat="@drawable/find_teams"
+        android:background="@android:color/transparent"
+        android:scaleType="fitStart"
+        android:contentDescription="@string/find_image_button"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"/>
+
+    <ImageButton
+        android:id="@+id/find_games_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        android:onClick="findGames"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/find_image_button"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/find_games" />
+
+    <ImageButton
+        android:id="@+id/create_game_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        app:srcCompat="@drawable/create_game_img_button"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:onClick="createGame"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/find_image_button"
+        android:scaleType="fitStart"/>
+
+</LinearLayout>

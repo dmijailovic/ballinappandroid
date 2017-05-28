@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/_100sdp"
+    android:id="@+id/players_layout"
+    android:background="#87000000"
+    android:layout_marginTop="@dimen/_5sdp">
+
+
+    <ImageView
+        android:id="@+id/player_profile_picture"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        app:srcCompat="@drawable/player_profile"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:contentDescription="@string/players"/>
+
+    <TextView
+        android:id="@+id/player_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/player_profile_picture"
+        android:layout_toRightOf="@+id/player_profile_picture"
+        android:layout_toEndOf="@+id/player_profile_picture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:text="@string/player_name_placeholder"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/player_birthyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/player_nickname"
+        android:layout_alignStart="@+id/player_nickname"
+        android:layout_below="@+id/player_nickname"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/birthyear_placeholder"
+        android:textAllCaps="true"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/player_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/player_birthyear"
+        android:layout_alignStart="@+id/player_birthyear"
+        android:layout_below="@+id/player_birthyear"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/contact_placeholder"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/_12sdp"/>
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ballinapp.com.ballinapp.search.TeamSearch"
+    android:background="@drawable/update_team_wp">
+
+    <TextView
+        android:id="@+id/find_by_tv"
+        android:text="@string/find_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_30sdp"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_radio_group"
+        android:orientation="vertical"
+        android:layout_below="@+id/find_by_tv"
+        android:checkedButton="@+id/radio_button_name"
+        android:layout_marginTop="@dimen/_15sdp">
+
+        <RadioButton
+            android:id="@+id/radio_button_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/name"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15sdp"
+            android:layout_gravity="start"/>
+
+        <RadioButton
+            android:id="@+id/radio_button_city"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/city"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/team_search_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_radio_group"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/team_search_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/team_search_word"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:background="@android:color/transparent"
+        android:onClick="search"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/search_button"
+        android:contentDescription="@string/find_image_button"/>
+</RelativeLayout>

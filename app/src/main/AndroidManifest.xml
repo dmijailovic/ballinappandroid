@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ballinapp.com.ballinapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".team.UpdateTeam" />
+        <activity android:name=".team.MyProfile" />
+        <activity android:name=".search.TeamSearch" />
+        <activity android:name=".search.GameSearch" />
+        <activity android:name=".Requests" />
+        <activity android:name=".team.Players" />
+        <activity android:name=".team.AddPlayer" />
+        <activity android:name=".search.TeamsResult" />
+        <activity android:name=".search.ProfileResult" />
+        <activity android:name=".search.PlayersResult" />
+        <activity android:name=".search.GamesResult" />
+        <activity android:name=".team.MyGames" />
+        <activity android:name=".CreateGame" />
+        <activity android:name=".SendRequest"></activity>
+    </application>
+
+</manifest>

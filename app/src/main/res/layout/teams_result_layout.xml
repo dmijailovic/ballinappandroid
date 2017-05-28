@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/teams_result_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="#87000000"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/team_name_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="IME TIMA"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_30sdp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/team_state_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/team_name_result_layout"
+        android:fontFamily="sans-serif-condensed"
+        android:text="drzava"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/team_city_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/team_state_result_layout"
+        android:fontFamily="sans-serif-condensed"
+        android:text="grad"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/team_app_plus_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/team_name_result_layout"
+        android:layout_alignStart="@+id/team_name_result_layout"
+        android:layout_below="@+id/team_name_result_layout"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="12"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/team_app_minus_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/team_name_result_layout"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_toEndOf="@+id/team_app_plus_result_layout"
+        android:layout_toRightOf="@+id/team_app_plus_result_layout"
+        android:text="34"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/team_open_result_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/team_app_minus_result_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:text="OPEN"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>
