@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/update_team_wp"
-    tools:context="ballinapp.com.ballinapp.search.GameSearch">
+    tools:context="ballinapp.com.ballinapp.public_games.GameSearch">
 
     <TextView
         android:id="@+id/enter_city_tv"

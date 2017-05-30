@@ -1,11 +1,10 @@
-package ballinapp.com.ballinapp.search;
+package ballinapp.com.ballinapp.public_games;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import ballinapp.com.ballinapp.R;
 
@@ -25,6 +24,5 @@ public class GameSearch extends AppCompatActivity {
     public void search(View view) {
         String keyword = city.getText().toString();
         startActivity(new Intent(this, GamesResult.class).putExtra("keyword", keyword));
-        Toast.makeText(getApplicationContext(), R.string.tap_to_join,Toast.LENGTH_LONG).show();
     }
 }

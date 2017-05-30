@@ -1,4 +1,4 @@
-package ballinapp.com.ballinapp;
+package ballinapp.com.ballinapp.public_games;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
 import ballinapp.com.ballinapp.data.Game;

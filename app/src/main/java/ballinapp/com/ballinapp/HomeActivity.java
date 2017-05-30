@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import ballinapp.com.ballinapp.search.GameSearch;
+import ballinapp.com.ballinapp.public_games.CreateGame;
+import ballinapp.com.ballinapp.requests.Requests;
+import ballinapp.com.ballinapp.public_games.GameSearch;
 import ballinapp.com.ballinapp.search.TeamSearch;
-import ballinapp.com.ballinapp.team.MyGames;
 import ballinapp.com.ballinapp.team.MyProfile;
 
 public class HomeActivity extends AppCompatActivity {

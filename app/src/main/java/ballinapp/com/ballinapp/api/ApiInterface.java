@@ -13,6 +13,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiInterface {
@@ -36,7 +37,7 @@ public interface ApiInterface {
     Call<Void> deletePlayer(@Path("teamId") Long teamId, @Path("playerId") int playerId);
 
     @GET("/team/{teamName}")
-    Call<Team> findTeamByName(@Path("teamName") String teamName);
+    Call<List<Team>> findTeamByName(@Path("teamName") String teamName);
 
     @GET("/cities/{cityName}")
     Call<List<Team>> findTeamsByCity(@Path("cityName") String cityName);
@@ -61,4 +62,7 @@ public interface ApiInterface {
 
     @GET("/requests/new/{teamId}")
     Call<List<NewRequest>> getRequests(@Path("teamId") Long teamId);
+
+    @PUT("/requests/{requestId}/{response}")
+    Call<Void> requestResponse(@Path("requestId") int requestId, @Path("response") boolean response);
 }

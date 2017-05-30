@@ -1,4 +1,4 @@
-package ballinapp.com.ballinapp;
+package ballinapp.com.ballinapp.requests;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
 import ballinapp.com.ballinapp.data.Request;

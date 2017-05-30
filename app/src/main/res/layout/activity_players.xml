@@ -7,15 +7,15 @@
     tools:context="ballinapp.com.ballinapp.team.Players"
     android:background="@drawable/update_team_wp">
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
         android:layout_below="@+id/add_players_button"
         android:layout_marginTop="@dimen/_5sdp"
-        android:id="@+id/players_recycler_view"
+        android:id="@+id/players_list_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:layout_alignParentBottom="true">
 
-    </android.support.v7.widget.RecyclerView>
+    </ListView>
 
     <ImageView
         android:id="@+id/players_tv"

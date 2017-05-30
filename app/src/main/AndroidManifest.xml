@@ -27,17 +27,18 @@
         <activity android:name=".team.UpdateTeam" />
         <activity android:name=".team.MyProfile" />
         <activity android:name=".search.TeamSearch" />
-        <activity android:name=".search.GameSearch" />
-        <activity android:name=".Requests" />
+        <activity android:name=".public_games.GameSearch" />
+        <activity android:name=".requests.Requests" />
         <activity android:name=".team.Players" />
         <activity android:name=".team.AddPlayer" />
         <activity android:name=".search.TeamsResult" />
         <activity android:name=".search.ProfileResult" />
         <activity android:name=".search.PlayersResult" />
-        <activity android:name=".search.GamesResult" />
+        <activity android:name=".public_games.GamesResult" />
         <activity android:name=".team.MyGames" />
-        <activity android:name=".CreateGame" />
-        <activity android:name=".SendRequest"></activity>
+        <activity android:name=".public_games.CreateGame" />
+        <activity android:name=".requests.SendRequest" />
+        <activity android:name=".search.FoundProfile"></activity>
     </application>
 
 </manifest>

@@ -4,6 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class NewRequest {
 
+    @SerializedName("id")
+    private int id;
+
+    @SerializedName("status")
+    private boolean status;
+
     @SerializedName("opponentName")
     private String opponentName;
 
@@ -31,7 +37,7 @@ public class NewRequest {
     @SerializedName("sentAt")
     private String sentAt;
 
-    public NewRequest(String opponentName, String message, String contact, String state, String city, String date, String time, String address, String sentAt) {
+    public NewRequest(String opponentName, String message, String contact, String state, String city, String date, String time, String address, String sentAt, int id) {
         this.opponentName = opponentName;
         this.message = message;
         this.contact = contact;
@@ -41,6 +47,7 @@ public class NewRequest {
         this.date = date;
         this.time = time;
         this.sentAt = sentAt;
+        this.id = id;
     }
 
     public String getOpponentName() {
@@ -113,5 +120,21 @@ public class NewRequest {
 
     public void setSentAt(String sentAt) {
         this.sentAt = sentAt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

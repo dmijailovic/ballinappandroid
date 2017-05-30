@@ -49,4 +49,18 @@
     <string name="from">from:</string>
     <string name="info">info:</string>
     <string name="received_at">Received at:</string>
+    <string name="requests">Requests</string>
+    <string name="choose_action">Choose your action: </string>
+    <string name="accept_request">Accept request</string>
+    <string name="reject_request">Reject request</string>
+    <string name="toast_accept">Request accepted!</string>
+    <string name="toast_reject">Request rejected!</string>
+    <string name="my_games">My Games</string>
+    <string name="leave_game">Leave game</string>
+    <string name="delete_player">Delete player</string>
+    <string name="teams">Teams found</string>
+    <string name="go_to_profile">Go to profile</string>
+    <string name="send_request">Send game request</string>
+    <string name="games">Games in town</string>
+    <string name="join_game">Join this game</string>
 </resources>
