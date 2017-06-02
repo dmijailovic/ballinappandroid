@@ -21,7 +21,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         getSupportActionBar().hide();
 
-        teamId = getIntent().getExtras().getLong("id");
+        if(teamId == null) {
+            teamId = getIntent().getExtras().getLong("id");
+        }
+
      }
 
      public void profile(View view) {

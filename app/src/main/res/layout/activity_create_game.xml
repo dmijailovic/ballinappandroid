@@ -203,6 +203,19 @@
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/error_tv_create_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
+
             <ImageButton
                 android:id="@+id/imageButton4"
                 android:layout_width="@dimen/_67sdp"

@@ -38,7 +38,8 @@
         <activity android:name=".team.MyGames" />
         <activity android:name=".public_games.CreateGame" />
         <activity android:name=".requests.SendRequest" />
-        <activity android:name=".search.FoundProfile"></activity>
+        <activity android:name=".search.FoundProfile" />
+        <activity android:name=".requests.SentRequests"></activity>
     </application>
 
 </manifest>

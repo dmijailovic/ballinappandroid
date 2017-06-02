@@ -117,4 +117,30 @@
         android:onClick="sendRequest"
         app:srcCompat="@drawable/send_request_image_button" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/plus_imgb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="appearancePlus"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/plus_imgb" />
+
+        <ImageButton
+            android:id="@+id/minus_imgb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="appearanceMinus"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/minus_imgb" />
+    </LinearLayout>
+
 </LinearLayout>

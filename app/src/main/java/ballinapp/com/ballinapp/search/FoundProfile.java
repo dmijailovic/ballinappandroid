@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
@@ -20,6 +22,8 @@ public class FoundProfile extends AppCompatActivity {
 
     TextView name, state, city, open, plus, minus;
     Long id;
+    ImageButton plus_img;
+    ImageButton minus_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,9 @@ public class FoundProfile extends AppCompatActivity {
         getSupportActionBar().hide();
 
         id = getIntent().getExtras().getLong("receiver_id");
+
+        plus_img = (ImageButton) findViewById(R.id.plus_imgb);
+        minus_img = (ImageButton) findViewById(R.id.minus_imgb);
 
         name = (TextView) findViewById(R.id.team_name_tv_profile_src);
         state = (TextView) findViewById(R.id.state_tv_profile_src);
@@ -71,5 +78,41 @@ public class FoundProfile extends AppCompatActivity {
 
     public void sendRequest(View view) {
         startActivity(new Intent(this, SendRequest.class).putExtra("receiver_id", id));
+    }
+
+    public void appearancePlus(View view) {
+        minus_img.setEnabled(false);
+        plus_img.setEnabled(false);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<Void> call = apiService.updateAppearance(id, "plus");
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(getApplicationContext(), R.string.submited, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void appearanceMinus(View view) {
+        minus_img.setEnabled(false);
+        plus_img.setEnabled(false);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<Void> call = apiService.updateAppearance(id, "minus");
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(getApplicationContext(), R.string.submited, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 }

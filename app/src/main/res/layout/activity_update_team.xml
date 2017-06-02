@@ -100,6 +100,19 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_light" />
 
+    <TextView
+        android:id="@+id/error_tv_update_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
+
 
     <ImageButton
         android:id="@+id/imageButton"

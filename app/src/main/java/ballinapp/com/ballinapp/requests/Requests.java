@@ -1,6 +1,7 @@
 package ballinapp.com.ballinapp.requests;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,6 +67,12 @@ public class Requests extends AppCompatActivity {
                                 requestResponse(requestId, false, "Request rejected!");
                             }
                         });
+                        alert.setNeutralButton(R.string.remove_from_requests, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeFromMyRequests(requestId);
+                            }
+                        });
                         alert.show();
                     }
                 });
@@ -89,9 +96,29 @@ public class Requests extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), R.string.wrong, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void removeFromMyRequests(int requestId) {
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<Void> call = apiService.removeFromMyRequests(requestId);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(getApplicationContext(), R.string.removed_from_requests, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), R.string.wrong, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void sentRequests(View view) {
+        startActivity(new Intent(this, SentRequests.class));
     }
 
 }

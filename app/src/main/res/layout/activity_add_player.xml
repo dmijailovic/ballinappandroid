@@ -8,108 +8,124 @@
     android:background="@drawable/add_player_wp">
 
     <ImageView
-        android:id="@+id/add_player_profile_picture"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:srcCompat="@drawable/profile_picture"
-        android:contentDescription="@string/profile_img_btn"/>
+            android:id="@+id/add_player_profile_picture"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="@dimen/_125sdp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:srcCompat="@drawable/profile_picture"
+            android:contentDescription="@string/profile_img_btn"/>
 
-    <TextView
-        android:id="@+id/add_player_nickname_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_profile_picture"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/nickname"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp"/>
+        <TextView
+            android:id="@+id/add_player_nickname_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_profile_picture"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/nickname"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15sdp"/>
 
-    <EditText
-        android:id="@+id/add_player_nickname_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_nickname_tv"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/add_player_nickname_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_nickname_tv"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/add_player_birthyear_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_nickname_et"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/birthyear"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp" />
+        <TextView
+            android:id="@+id/add_player_birthyear_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_nickname_et"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/birthyear"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15sdp" />
 
-    <EditText
-        android:id="@+id/add_player_birthyear_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_birthyear_tv"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/add_player_birthyear_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_birthyear_tv"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/add_player_contact_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_birthyear_et"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/contact"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp" />
+        <TextView
+            android:id="@+id/add_player_contact_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_birthyear_et"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/contact"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15sdp" />
 
-    <EditText
-        android:id="@+id/add_player_contact_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_player_contact_tv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/add_player_contact_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_player_contact_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="9dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/add_player_img_button"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_5sdp"
-        app:srcCompat="@drawable/add_player"
-        android:scaleType="centerInside"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/players"
-        android:onClick="addPlayer"/>
+        <TextView
+            android:layout_below="@+id/add_player_contact_et"
+            android:id="@+id/error_tv_add_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_below="@+id/error_tv_add_player"
+            android:id="@+id/add_player_img_button"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:srcCompat="@drawable/add_player"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/players"
+            android:onClick="addPlayer"/>
+
 </RelativeLayout>

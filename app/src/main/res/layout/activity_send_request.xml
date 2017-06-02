@@ -182,6 +182,7 @@
                 android:id="@+id/message_input_tv_send_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/message"
@@ -189,8 +190,7 @@
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_15sdp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/message_input_send_request"
@@ -201,6 +201,19 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/error_tv_send_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
 
             <ImageButton

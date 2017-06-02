@@ -6,8 +6,8 @@
     <string name="register_bt">register button</string>
     <string name="password_tv">PASSWORD</string>
     <string name="email">EMAIL</string>
-    <string name="city">city:</string>
-    <string name="state">STATE:</string>
+    <string name="city">city</string>
+    <string name="state">STATE</string>
     <string name="team_name_tv">TEAM NAME</string>
     <string name="profile_img_btn">profile image button</string>
     <string name="requests_img_btn">requests image button</string>
@@ -26,7 +26,7 @@
     <string name="contact_placeholder">email@gmail.com</string>
     <string name="nickname">nickname</string>
     <string name="birthyear">birthyear</string>
-    <string name="contact">contact:</string>
+    <string name="contact">contact</string>
     <string name="player_deleted">Player successfully deleted!</string>
     <string name="tap_to_delete">Tap to delete player!</string>
     <string name="find_by">find teams by:</string>
@@ -37,11 +37,11 @@
     <string name="tap_to_leave">Tap game to cancel!</string>
     <string name="game_left">You left this game</string>
     <string name="img_button">Image Button</string>
-    <string name="address">address:</string>
-    <string name="date">date:</string>
-    <string name="time">time:</string>
+    <string name="address">address</string>
+    <string name="date">date</string>
+    <string name="time">time</string>
     <string name="game_created">Game created!</string>
-    <string name="message">message:</string>
+    <string name="message">message</string>
     <string name="request_sent">Request sent!</string>
     <string name="opened">open</string>
     <string name="closed">closed</string>
@@ -63,4 +63,13 @@
     <string name="send_request">Send game request</string>
     <string name="games">Games in town</string>
     <string name="join_game">Join this game</string>
+    <string name="submited">Submited!</string>
+    <string name="to">TO:</string>
+    <string name="sent_at">SENT AT:</string>
+    <string name="request_deleted">Request canceled!</string>
+    <string name="wrong">Sorry, something went wrong! Try again!</string>
+    <string name="cancel_request">Cancel request</string>
+    <string name="remove_from_requests">Remove from my requests</string>
+    <string name="removed_from_requests">Removed from my requests!</string>
+    <string name="invalid_info">You entered invalid info!</string>
 </resources>

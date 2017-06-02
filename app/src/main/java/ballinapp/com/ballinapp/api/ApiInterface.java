@@ -65,4 +65,16 @@ public interface ApiInterface {
 
     @PUT("/requests/{requestId}/{response}")
     Call<Void> requestResponse(@Path("requestId") int requestId, @Path("response") boolean response);
+
+    @PUT("/teams/{teamId}/appearance/{value}")
+    Call<Void> updateAppearance(@Path("teamId") Long teamId, @Path("value") String value);
+
+    @GET("/requests/sent/{teamId}")
+    Call<List<NewRequest>> getSentRequests(@Path("teamId") Long teamId);
+
+    @DELETE("/requests/{requestId}")
+    Call<Void> deleteRequest(@Path("requestId") int requestId);
+
+    @PUT("/requests/{requestId}")
+    Call<Void> removeFromMyRequests(@Path("requestId") int requestId);
 }
