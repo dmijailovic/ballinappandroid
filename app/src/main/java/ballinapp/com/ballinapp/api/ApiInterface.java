@@ -77,4 +77,7 @@ public interface ApiInterface {
 
     @PUT("/requests/{requestId}")
     Call<Void> removeFromMyRequests(@Path("requestId") int requestId);
+
+    @PUT("/teams/{teamId}/open")
+    Call<Void> updateAvailability(@Path("teamId") Long teamId);
 }
