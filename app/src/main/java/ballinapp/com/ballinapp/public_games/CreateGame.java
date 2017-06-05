@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ballinapp.com.ballinapp.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
@@ -59,7 +60,7 @@ public class CreateGame extends AppCompatActivity {
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    startActivity(new Intent(getApplicationContext(), MyProfile.class));
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     Toast.makeText(getApplicationContext(), R.string.game_created, Toast.LENGTH_SHORT).show();
                 }
 

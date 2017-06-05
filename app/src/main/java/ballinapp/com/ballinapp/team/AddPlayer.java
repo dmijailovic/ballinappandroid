@@ -47,7 +47,7 @@ public class AddPlayer extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     Toast.makeText(getApplicationContext(), "Player successfully added!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", HomeActivity.teamId));
+                    startActivity(new Intent(getApplicationContext(), MyProfile.class));
                 }
 
                 @Override
