@@ -34,7 +34,7 @@ public class SentRequests extends AppCompatActivity {
         getSupportActionBar().hide();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<NewRequest>> call = apiService.getSentRequests(HomeActivity.teamId);
+        Call<List<NewRequest>> call = apiService.getSentRequests(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<NewRequest>>() {
             @Override
             public void onResponse(Call<List<NewRequest>> call, Response<List<NewRequest>> response) {
@@ -72,7 +72,7 @@ public class SentRequests extends AppCompatActivity {
 
     private void cancelRequest(int requestId) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.deleteRequest(requestId);
+        Call<Void> call = apiService.deleteRequest(requestId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

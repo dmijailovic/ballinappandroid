@@ -39,15 +39,17 @@ public class MainActivity extends AppCompatActivity {
         errorTv = (TextView) findViewById(R.id.error_tv_main_activity);
 
         if(isLoggedIn() != null) {
-            loginCheck(Long.parseLong(isLoggedIn()));
+            String[] credentials = isLoggedIn();
+            loginCheck(Long.parseLong(credentials[0]), credentials[1]);
         } else {
             callbackManager = CallbackManager.Factory.create();
             loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
                     final String idString = loginResult.getAccessToken().getUserId();
+                    final String token = loginResult.getAccessToken().getToken();
                     Long userId = Long.parseLong(idString);
-                    loginCheck(userId);
+                    loginCheck(userId, token);
                 }
 
                 @Override
@@ -69,18 +71,21 @@ public class MainActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    public String isLoggedIn() {
+    public String[] isLoggedIn() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         String id = "";
+        String token = "";
         if(accessToken != null && !accessToken.isExpired()) {
             id = accessToken.getUserId();
+            token = accessToken.getToken();
         } else {
             id = null;
+            token = null;
         }
-        return id;
+        return new String[] {id, token};
     }
 
-    public void loginCheck(final Long id) {
+    public void loginCheck(final Long id, final String token) {
         ApiInterface apiService = ApiClient.getStringClient().create(ApiInterface.class);
         Call<String> call = apiService.checkAccount(id);
         call.enqueue(new Callback<String>() {
@@ -89,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 String check = response.body();
                 if(response.isSuccessful()) {
                     if("true".equals(check)) {
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", id));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", id).putExtra("token", token));
                     } else {
-                        startActivity(new Intent(getApplicationContext(), UpdateTeam.class).putExtra("id", id));
+                        startActivity(new Intent(getApplicationContext(), UpdateTeam.class).putExtra("id", id).putExtra("token", token));
                     }
                 }
             }

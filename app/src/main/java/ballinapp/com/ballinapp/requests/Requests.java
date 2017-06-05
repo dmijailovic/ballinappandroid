@@ -36,7 +36,7 @@ public class Requests extends AppCompatActivity {
         getSupportActionBar().hide();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<NewRequest>> call = apiService.getRequests(HomeActivity.teamId);
+        Call<List<NewRequest>> call = apiService.getRequests(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<NewRequest>>() {
             @Override
             public void onResponse(Call<List<NewRequest>> call, Response<List<NewRequest>> response) {
@@ -87,7 +87,7 @@ public class Requests extends AppCompatActivity {
 
     private void requestResponse(int requestId, boolean response, final String toast) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.requestResponse(requestId, response);
+        Call<Void> call = apiService.requestResponse(requestId, response, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -103,7 +103,7 @@ public class Requests extends AppCompatActivity {
 
     private void removeFromMyRequests(int requestId) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.removeFromMyRequests(requestId);
+        Call<Void> call = apiService.removeFromMyRequests(requestId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

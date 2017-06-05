@@ -39,7 +39,7 @@ public class GamesResult extends AppCompatActivity {
         keyword = getIntent().getExtras().getString("keyword");
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Game>> call = apiService.findGamesByCity(keyword);
+        Call<List<Game>> call = apiService.findGamesByCity(keyword, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<Game>>() {
             @Override
             public void onResponse(Call<List<Game>> call, Response<List<Game>> response) {
@@ -81,7 +81,7 @@ public class GamesResult extends AppCompatActivity {
         team.setTeam_id(HomeActivity.teamId);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.joinGame(gameId, team);
+        Call<Void> call = apiService.joinGame(gameId, team, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

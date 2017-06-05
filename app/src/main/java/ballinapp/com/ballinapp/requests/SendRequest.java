@@ -67,7 +67,7 @@ public class SendRequest extends AppCompatActivity {
     public void sendRequest(View view) {
         if(validateRequest(getData())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.sendRequest(getData());
+            Call<Void> call = apiService.sendRequest(getData(), HomeActivity.token, HomeActivity.teamId);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

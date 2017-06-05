@@ -40,7 +40,7 @@ public class Players extends AppCompatActivity {
         getSupportActionBar().hide();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Player>> call = apiService.getPlayersByTeam(HomeActivity.teamId);
+        Call<List<Player>> call = apiService.getPlayersByTeam(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<Player>>() {
             @Override
             public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
@@ -80,7 +80,7 @@ public class Players extends AppCompatActivity {
 
     private void deletePlayer(int playerId) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.deletePlayer(HomeActivity.teamId, playerId);
+        Call<Void> call = apiService.deletePlayer(HomeActivity.teamId, playerId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

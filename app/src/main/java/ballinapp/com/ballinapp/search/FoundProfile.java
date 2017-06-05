@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ballinapp.com.ballinapp.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
@@ -44,7 +45,7 @@ public class FoundProfile extends AppCompatActivity {
         minus = (TextView) findViewById(R.id.app_minus_profile_src);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Team> call = apiService.getTeamById(id);
+        Call<Team> call = apiService.getTeamById(id, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Team>() {
             @Override
             public void onResponse(Call<Team> call, Response<Team> response) {
@@ -84,7 +85,7 @@ public class FoundProfile extends AppCompatActivity {
         minus_img.setEnabled(false);
         plus_img.setEnabled(false);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.updateAppearance(id, "plus");
+        Call<Void> call = apiService.updateAppearance(id, "plus", HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -102,7 +103,7 @@ public class FoundProfile extends AppCompatActivity {
         minus_img.setEnabled(false);
         plus_img.setEnabled(false);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.updateAppearance(id, "minus");
+        Call<Void> call = apiService.updateAppearance(id, "minus", HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

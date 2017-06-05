@@ -14,6 +14,7 @@ import ballinapp.com.ballinapp.team.MyProfile;
 public class HomeActivity extends AppCompatActivity {
 
     public static Long teamId;
+    public static String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,10 @@ public class HomeActivity extends AppCompatActivity {
 
         if(teamId == null) {
             teamId = getIntent().getExtras().getLong("id");
+        }
+
+        if(token == null) {
+            token = getIntent().getExtras().getString("token");
         }
 
      }

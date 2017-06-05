@@ -13,6 +13,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ballinapp.com.ballinapp.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.requests.SendRequest;
 import ballinapp.com.ballinapp.adapter.TeamsResultAdapter;
@@ -38,7 +39,7 @@ public class ProfileResult extends AppCompatActivity {
         keyword = getIntent().getExtras().getString("keyword");
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Team>> call = apiService.findTeamByName(keyword);
+        Call<List<Team>> call = apiService.findTeamByName(keyword, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<Team>>() {
             @Override
             public void onResponse(Call<List<Team>> call, Response<List<Team>> response) {

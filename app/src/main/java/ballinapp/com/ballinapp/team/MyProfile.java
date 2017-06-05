@@ -39,7 +39,7 @@ public class MyProfile extends AppCompatActivity {
         switch1 = (Switch) findViewById(R.id.switch1);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Team> call = apiService.getTeamById(HomeActivity.teamId);
+        Call<Team> call = apiService.getTeamById(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
 
         call.enqueue(new Callback<Team>() {
             @Override
@@ -91,7 +91,7 @@ public class MyProfile extends AppCompatActivity {
 
     public void changeAvailability() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.updateAvailability(HomeActivity.teamId);
+        Call<Void> call = apiService.updateAvailability(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

@@ -33,6 +33,9 @@ public class Team {
     @SerializedName("city")
     private String city;
 
+    @SerializedName("access_token")
+    private String accessToken;
+
     public Team(Long team_id, String name, String state, int appearance_plus, int appearance_minus, boolean open,
                 String password, String email, String city) {
         this.team_id = team_id;
@@ -126,5 +129,13 @@ public class Team {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }

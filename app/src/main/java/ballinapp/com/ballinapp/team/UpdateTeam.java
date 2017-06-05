@@ -21,6 +21,7 @@ public class UpdateTeam extends AppCompatActivity {
     EditText name, state, city, email;
     TextView error;
     Long teamId;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class UpdateTeam extends AppCompatActivity {
         email = (EditText) findViewById(R.id.team_email_et_register_page);
         error = (TextView) findViewById(R.id.error_tv_update_team);
         teamId = getIntent().getExtras().getLong("id");
+        token = getIntent().getExtras().getString("token");
 
     }
 
@@ -42,6 +44,7 @@ public class UpdateTeam extends AppCompatActivity {
         Team team = new Team();
 
         team.setTeam_id(teamId);
+        team.setAccessToken(token);
         team.setName(name.getText().toString());
         team.setState(state.getText().toString());
         team.setCity(city.getText().toString());
@@ -59,7 +62,7 @@ public class UpdateTeam extends AppCompatActivity {
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", teamId));
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", teamId).putExtra("token", token));
                 }
 
                 @Override

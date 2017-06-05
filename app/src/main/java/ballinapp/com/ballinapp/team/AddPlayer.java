@@ -42,7 +42,7 @@ public class AddPlayer extends AppCompatActivity {
     public void addPlayer(View view) {
         if(validatePlayer(getData())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.addPlayer(HomeActivity.teamId, getData());
+            Call<Void> call = apiService.addPlayer(HomeActivity.teamId, getData(), HomeActivity.token, HomeActivity.teamId);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

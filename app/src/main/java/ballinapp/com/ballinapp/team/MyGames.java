@@ -36,7 +36,7 @@ public class MyGames extends AppCompatActivity {
         getSupportActionBar().hide();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Game>> call = apiService.getMyGames(HomeActivity.teamId);
+        Call<List<Game>> call = apiService.getMyGames(HomeActivity.teamId, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<Game>>() {
             @Override
             public void onResponse(Call<List<Game>> call, Response<List<Game>> response) {
@@ -78,7 +78,7 @@ public class MyGames extends AppCompatActivity {
         team.setTeam_id(HomeActivity.teamId);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Void> call = apiService.leaveGame(gameId, team);
+        Call<Void> call = apiService.leaveGame(gameId, team, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

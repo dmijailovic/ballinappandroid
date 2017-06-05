@@ -56,7 +56,7 @@ public class CreateGame extends AppCompatActivity {
     public void createGame(View view) {
         if (validateGame(getGame())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.createGame(getGame());
+            Call<Void> call = apiService.createGame(getGame(), HomeActivity.token, HomeActivity.teamId);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

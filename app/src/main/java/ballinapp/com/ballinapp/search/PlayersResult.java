@@ -10,6 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ballinapp.com.ballinapp.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.adapter.PlayerAdapter;
 import ballinapp.com.ballinapp.api.ApiClient;
@@ -33,7 +34,7 @@ public class PlayersResult extends AppCompatActivity {
         id = getIntent().getExtras().getLong("id");
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Player>> call = apiService.getPlayersByTeam(id);
+        Call<List<Player>> call = apiService.getPlayersByTeam(id, HomeActivity.token, HomeActivity.teamId);
         call.enqueue(new Callback<List<Player>>() {
             @Override
             public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
