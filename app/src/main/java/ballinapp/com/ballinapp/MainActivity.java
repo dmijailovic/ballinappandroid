@@ -78,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
         if(accessToken != null && !accessToken.isExpired()) {
             id = accessToken.getUserId();
             token = accessToken.getToken();
+            return new String[] {id, token};
         } else {
-            id = null;
-            token = null;
+            return null;
         }
-        return new String[] {id, token};
     }
 
     public void loginCheck(final Long id, final String token) {

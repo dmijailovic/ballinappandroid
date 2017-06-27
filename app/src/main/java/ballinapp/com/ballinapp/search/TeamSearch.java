@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import ballinapp.com.ballinapp.HomeActivity;
 import ballinapp.com.ballinapp.R;
 
 public class TeamSearch extends AppCompatActivity {
@@ -47,5 +48,10 @@ public class TeamSearch extends AppCompatActivity {
 
         intent.putExtra("keyword", getSearchWord());
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

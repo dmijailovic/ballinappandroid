@@ -58,7 +58,6 @@ public class FoundProfile extends AppCompatActivity {
                 minus.setText(String.valueOf(team.getAppearance_minus()));
 
                 if(team.isOpen()) {
-                    open.setTextColor(getResources().getColor(R.color.blue));
                     open.setText(R.string.open);
                 } else {
                     open.setTextColor(getResources().getColor(R.color.red));
@@ -115,5 +114,10 @@ public class FoundProfile extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, TeamSearch.class));
     }
 }

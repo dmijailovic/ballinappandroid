@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/sent_requests_list_view"
-    tools:context="ballinapp.com.ballinapp.requests.SentRequests">
+    tools:context="ballinapp.com.ballinapp.requests.SentRequests"
+    android:background="@drawable/update_team_wp">
 
 </ListView>

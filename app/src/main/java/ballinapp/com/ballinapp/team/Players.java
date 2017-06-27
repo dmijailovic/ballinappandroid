@@ -57,7 +57,7 @@ public class Players extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         playerId = players.get(position).getId();
                         AlertDialog.Builder alert = new AlertDialog.Builder(Players.this);
-                        alert.setTitle(R.string.players);
+                        alert.setTitle(R.string.players_string);
                         alert.setMessage(R.string.choose_action);
                         alert.setNegativeButton(R.string.delete_player, new DialogInterface.OnClickListener() {
                             @Override
@@ -96,6 +96,11 @@ public class Players extends AppCompatActivity {
 
     public void addPlayer(View view) {
         startActivity(new Intent(this, AddPlayer.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MyProfile.class));
     }
 
 }

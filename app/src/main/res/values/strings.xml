@@ -73,4 +73,5 @@
     <string name="removed_from_requests">Removed from my requests!</string>
     <string name="invalid_info">You entered invalid info!</string>
     <string name="av_changed">Availability changed!</string>
+    <string name="players_string">players</string>
 </resources>
