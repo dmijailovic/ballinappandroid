@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".app.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +23,8 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".team.UpdateTeam" />
+        <activity android:name=".app.HomeActivity" />
+        <activity android:name=".team.RegisterTeam" />
         <activity android:name=".team.MyProfile" />
         <activity android:name=".search.TeamSearch" />
         <activity android:name=".public_games.GameSearch" />
@@ -39,7 +39,9 @@
         <activity android:name=".public_games.CreateGame" />
         <activity android:name=".requests.SendRequest" />
         <activity android:name=".search.FoundProfile" />
-        <activity android:name=".requests.SentRequests"></activity>
+        <activity android:name=".requests.SentRequests" />
+        <activity android:name=".app.LoginActivity" />
+        <activity android:name=".app.MiddleActivity"></activity>
     </application>
 
 </manifest>

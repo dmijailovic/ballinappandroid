@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/menu_wp"
     android:orientation="vertical"
-    tools:context="ballinapp.com.ballinapp.HomeActivity">
+    tools:context="ballinapp.com.ballinapp.app.HomeActivity">
 
     <ImageView
         android:id="@+id/imageView2"

@@ -35,8 +35,8 @@ public class TeamsResultAdapter extends ArrayAdapter<Team> {
         teamName.setText(team.getName());
         teamState.setText(team.getState());
         teamCity.setText(team.getCity());
-        appPlus.setText(String.valueOf(team.getAppearance_plus()));
-        appMinus.setText(String.valueOf(team.getAppearance_minus()));
+        appPlus.setText(String.valueOf(team.getAppearancePlus()));
+        appMinus.setText(String.valueOf(team.getAppearanceMinus()));
 
         if(team.isOpen()) {
             open.setText(R.string.open);

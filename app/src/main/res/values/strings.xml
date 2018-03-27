@@ -6,7 +6,7 @@
     <string name="register_bt">register button</string>
     <string name="password_tv">PASSWORD</string>
     <string name="email">EMAIL</string>
-    <string name="city">city</string>
+    <string name="city">CITY</string>
     <string name="state">STATE</string>
     <string name="team_name_tv">TEAM NAME</string>
     <string name="profile_img_btn">profile image button</string>
@@ -74,4 +74,5 @@
     <string name="invalid_info">You entered invalid info!</string>
     <string name="av_changed">Availability changed!</string>
     <string name="players_string">players</string>
+    <string name="wrong_credentials">Wrong credentials! Try again!</string>
 </resources>

@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.app.HomeActivity;
 import ballinapp.com.ballinapp.R;
 
 public class TeamSearch extends AppCompatActivity {
@@ -22,8 +22,8 @@ public class TeamSearch extends AppCompatActivity {
         setContentView(R.layout.activity_team_search);
         getSupportActionBar().hide();
 
-        radioGroup = (RadioGroup) findViewById(R.id.search_radio_group);
-        searchWord = (EditText) findViewById(R.id.team_search_word);
+        radioGroup = findViewById(R.id.search_radio_group);
+        searchWord = findViewById(R.id.team_search_word);
 
     }
 
@@ -33,7 +33,7 @@ public class TeamSearch extends AppCompatActivity {
 
     public String getCriteria() {
         int selectedId = radioGroup.getCheckedRadioButtonId();
-        RadioButton radioButton = (RadioButton) findViewById(selectedId);
+        RadioButton radioButton = findViewById(selectedId);
         return radioButton.getText().toString();
     }
 

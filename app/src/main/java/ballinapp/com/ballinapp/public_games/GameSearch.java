@@ -18,7 +18,7 @@ public class GameSearch extends AppCompatActivity {
         setContentView(R.layout.activity_game_search);
         getSupportActionBar().hide();
 
-        city = (EditText) findViewById(R.id.enter_city_et);
+        city = findViewById(R.id.enter_city_et);
     }
 
     public void search(View view) {

@@ -3,8 +3,9 @@ package ballinapp.com.ballinapp.data;
 import com.google.gson.annotations.SerializedName;
 
 public class Team {
+
     @SerializedName("id")
-    private Long team_id;
+    private int team_id;
 
     @SerializedName("name")
     private String name;
@@ -12,11 +13,11 @@ public class Team {
     @SerializedName("state")
     private String state;
 
-    @SerializedName("appearance_plus")
-    private int appearance_plus;
+    @SerializedName("appearancePlus")
+    private int appearancePlus;
 
-    @SerializedName("appearance_minus")
-    private int appearance_minus;
+    @SerializedName("appearanceMinus")
+    private int appearanceMinus;
 
     @SerializedName("open")
     private boolean open;
@@ -33,16 +34,13 @@ public class Team {
     @SerializedName("city")
     private String city;
 
-    @SerializedName("access_token")
-    private String accessToken;
-
-    public Team(Long team_id, String name, String state, int appearance_plus, int appearance_minus, boolean open,
+    public Team(int team_id, String name, String state, int appearance_plus, int appearance_minus, boolean open,
                 String password, String email, String city) {
         this.team_id = team_id;
         this.name = name;
         this.state = state;
-        this.appearance_plus = appearance_plus;
-        this.appearance_minus = appearance_minus;
+        this.appearancePlus = appearance_plus;
+        this.appearanceMinus = appearance_minus;
         this.open = open;
         this.password = password;
         this.email = email;
@@ -51,11 +49,11 @@ public class Team {
 
     public Team() {}
 
-    public Long getTeam_id() {
+    public int getTeam_id() {
         return team_id;
     }
 
-    public void setTeam_id(Long team_id) {
+    public void setTeam_id(int team_id) {
         this.team_id = team_id;
     }
 
@@ -75,20 +73,20 @@ public class Team {
         this.state = state;
     }
 
-    public int getAppearance_plus() {
-        return appearance_plus;
+    public int getAppearancePlus() {
+        return appearancePlus;
     }
 
-    public void setAppearance_plus(int appearance_plus) {
-        this.appearance_plus = appearance_plus;
+    public void setAppearancePlus(int appearancePlus) {
+        this.appearancePlus = appearancePlus;
     }
 
-    public int getAppearance_minus() {
-        return appearance_minus;
+    public int getAppearanceMinus() {
+        return appearanceMinus;
     }
 
-    public void setAppearance_minus(int appearance_minus) {
-        this.appearance_minus = appearance_minus;
+    public void setAppearanceMinus(int appearanceMinus) {
+        this.appearanceMinus = appearanceMinus;
     }
 
     public boolean isOpen() {
@@ -129,13 +127,5 @@ public class Team {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
     }
 }

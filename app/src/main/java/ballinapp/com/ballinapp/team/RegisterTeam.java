@@ -6,73 +6,85 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.app.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
+import ballinapp.com.ballinapp.app.LoginActivity;
 import ballinapp.com.ballinapp.data.Team;
+import ballinapp.com.ballinapp.data.util.JWTInfo;
+import ballinapp.com.ballinapp.data.util.RefreshInfo;
+import ballinapp.com.ballinapp.db.DBHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateTeam extends AppCompatActivity {
+public class RegisterTeam extends AppCompatActivity {
 
-    EditText name, state, city, email;
+    EditText name, state, city, email, password;
     TextView error;
-    Long teamId;
-    String token;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_team);
-
         getSupportActionBar().hide();
 
-        name = (EditText) findViewById(R.id.team_name_et_register_page);
-        state = (EditText) findViewById(R.id.team_state_et_register_page);
-        city = (EditText) findViewById(R.id.team_city_et_register_page);
-        email = (EditText) findViewById(R.id.team_email_et_register_page);
-        error = (TextView) findViewById(R.id.error_tv_update_team);
-        teamId = getIntent().getExtras().getLong("id");
-        token = getIntent().getExtras().getString("token");
+        name = findViewById(R.id.team_name_et_register_page);
+        state = findViewById(R.id.team_state_et_register_page);
+        city = findViewById(R.id.team_city_et_register_page);
+        email = findViewById(R.id.team_email_et_register_page);
+        error = findViewById(R.id.error_tv_update_team);
+        password = findViewById(R.id.team_password_et_register_team);
 
     }
 
     public Team getData() {
         Team team = new Team();
-
-        team.setTeam_id(teamId);
-        team.setAccessToken(token);
         team.setName(name.getText().toString());
         team.setState(state.getText().toString());
         team.setCity(city.getText().toString());
         team.setEmail(email.getText().toString());
+        team.setPassword(password.getText().toString());
         team.setOpen(true);
         team.setActive(true);
-
         return team;
     }
 
     public void registerTeam(View view) {
-        if(validateTeam(getData())) {
+        Team team = getData();
+        if(validateTeam(team)) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.addTeam(getData());
-            call.enqueue(new Callback<Void>() {
+            Call<JWTInfo> call = apiService.addTeam(team);
+            call.enqueue(new Callback<JWTInfo>() {
                 @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("id", teamId).putExtra("token", token));
+                public void onResponse(Call<JWTInfo> call, Response<JWTInfo> response) {
+                    if(response.message().contains("expired")) {
+                        refreshToken(HomeActivity.teamId, HomeActivity.refresh);
+                    } else {
+                        JWTInfo jwtInfo = response.body();
+                        insertLoginData(jwtInfo);
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    }
                 }
 
                 @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-
+                public void onFailure(Call<JWTInfo> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), R.string.wrong, Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
             error.setText(R.string.invalid_info);
         }
+    }
+
+    public void insertLoginData(JWTInfo jwtInfo) {
+        dbHelper = new DBHelper(this, null, null, 1);
+        dbHelper.insertLoginData(jwtInfo);
+        dbHelper.close();
     }
 
     private boolean validateTeam(Team team) {
@@ -132,6 +144,29 @@ public class UpdateTeam extends AppCompatActivity {
         }
 
         return nameB && stateB && cityB && emailB;
+    }
+
+    public void refreshToken(int teamId, String refresh) {
+        RefreshInfo refreshInfo = new RefreshInfo(teamId, refresh);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<JWTInfo> call = apiService.refreshToken(refreshInfo);
+        call.enqueue(new Callback<JWTInfo>() {
+            @Override
+            public void onResponse(Call<JWTInfo> call, Response<JWTInfo> response) {
+                if(response.code() == 401) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    JWTInfo jwtInfo = response.body();
+                    insertLoginData(jwtInfo);
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JWTInfo> call, Throwable t) {
+
+            }
+        });
     }
 
 }

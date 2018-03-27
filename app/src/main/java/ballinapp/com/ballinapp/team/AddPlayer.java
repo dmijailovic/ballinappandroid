@@ -8,11 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.app.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
+import ballinapp.com.ballinapp.app.LoginActivity;
 import ballinapp.com.ballinapp.data.Player;
+import ballinapp.com.ballinapp.data.util.JWTInfo;
+import ballinapp.com.ballinapp.data.util.RefreshInfo;
+import ballinapp.com.ballinapp.db.DBHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,6 +25,8 @@ public class AddPlayer extends AppCompatActivity {
 
     EditText nickname, birthyear, contact;
     TextView error;
+    String accessToken;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +34,12 @@ public class AddPlayer extends AppCompatActivity {
         setContentView(R.layout.activity_add_player);
         getSupportActionBar().hide();
 
-        nickname = (EditText) findViewById(R.id.add_player_nickname_et);
-        birthyear = (EditText) findViewById(R.id.add_player_birthyear_et);
-        contact = (EditText) findViewById(R.id.add_player_contact_et);
-        error = (TextView) findViewById(R.id.error_tv_add_player);
+        nickname = findViewById(R.id.add_player_nickname_et);
+        birthyear = findViewById(R.id.add_player_birthyear_et);
+        contact = findViewById(R.id.add_player_contact_et);
+        error = findViewById(R.id.error_tv_add_player);
+
+        accessToken = "Bearer " + HomeActivity.accessToken;
 
     }
 
@@ -42,12 +50,16 @@ public class AddPlayer extends AppCompatActivity {
     public void addPlayer(View view) {
         if(validatePlayer(getData())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.addPlayer(HomeActivity.teamId, getData(), HomeActivity.token, HomeActivity.teamId);
+            Call<Void> call = apiService.addPlayer(HomeActivity.teamId, getData(), accessToken);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    Toast.makeText(getApplicationContext(), "Player successfully added!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MyProfile.class));
+                    if(response.message().contains("expired")) {
+                        refreshToken(HomeActivity.teamId, HomeActivity.refresh);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Player successfully added!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MyProfile.class));
+                    }
                 }
 
                 @Override
@@ -94,5 +106,34 @@ public class AddPlayer extends AppCompatActivity {
 
         return nick && year && con;
 
+    }
+
+    public void insertLoginData(JWTInfo jwtInfo) {
+        dbHelper = new DBHelper(this, null, null, 1);
+        dbHelper.insertLoginData(jwtInfo);
+        dbHelper.close();
+    }
+
+    public void refreshToken(int teamId, String refresh) {
+        RefreshInfo refreshInfo = new RefreshInfo(teamId, refresh);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<JWTInfo> call = apiService.refreshToken(refreshInfo);
+        call.enqueue(new Callback<JWTInfo>() {
+            @Override
+            public void onResponse(Call<JWTInfo> call, Response<JWTInfo> response) {
+                if(response.code() == 401) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    JWTInfo jwtInfo = response.body();
+                    insertLoginData(jwtInfo);
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JWTInfo> call, Throwable t) {
+
+            }
+        });
     }
 }

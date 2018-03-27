@@ -25,13 +25,13 @@ public class Request {
     @SerializedName("time")
     private String time;
 
-    @SerializedName("senderTeamId")
-    private Team senderTeamId;
+    @SerializedName("senderTeam")
+    private int senderTeamId;
 
-    @SerializedName("receiverTeamId")
-    private Team receiverTeamId;
+    @SerializedName("receiverTeam")
+    private int receiverTeamId;
 
-    public Request(String message, String contact, String state, String city, String address, String date, String time, Team senderTeamId, Team receiverTeamId) {
+    public Request(String message, String contact, String state, String city, String address, String date, String time, int senderTeamId, int receiverTeamId) {
         this.message = message;
         this.contact = contact;
         this.state = state;
@@ -101,19 +101,19 @@ public class Request {
         this.time = time;
     }
 
-    public Team getSenderTeamId() {
+    public int getSenderTeamId() {
         return senderTeamId;
     }
 
-    public void setSenderTeamId(Team senderTeamId) {
+    public void setSenderTeamId(int senderTeamId) {
         this.senderTeamId = senderTeamId;
     }
 
-    public Team getReceiverTeamId() {
+    public int getReceiverTeamId() {
         return receiverTeamId;
     }
 
-    public void setReceiverTeamId(Team receiverTeamId) {
+    public void setReceiverTeamId(int receiverTeamId) {
         this.receiverTeamId = receiverTeamId;
     }
 }

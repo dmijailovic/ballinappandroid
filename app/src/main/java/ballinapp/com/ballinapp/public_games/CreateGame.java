@@ -8,12 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.app.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
+import ballinapp.com.ballinapp.app.LoginActivity;
 import ballinapp.com.ballinapp.data.Game;
-import ballinapp.com.ballinapp.team.MyProfile;
+import ballinapp.com.ballinapp.data.util.JWTInfo;
+import ballinapp.com.ballinapp.data.util.RefreshInfo;
+import ballinapp.com.ballinapp.db.DBHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,21 +25,24 @@ public class CreateGame extends AppCompatActivity {
 
     EditText state, city, address, date, time, contact, message;
     TextView error;
+    String accessToken;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
         getSupportActionBar().hide();
+        accessToken = "Bearer " + HomeActivity.accessToken;
 
-        state = (EditText) findViewById(R.id.state_input_create_game);
-        city = (EditText) findViewById(R.id.city_input_create_game);
-        address = (EditText) findViewById(R.id.address_input_create_game);
-        date = (EditText) findViewById(R.id.date_input_create_game);
-        time = (EditText) findViewById(R.id.time_input_create_game);
-        contact = (EditText) findViewById(R.id.contact_input_create_game);
-        message = (EditText) findViewById(R.id.message_input_create_game);
-        error = (TextView) findViewById(R.id.error_tv_create_game);
+        state = findViewById(R.id.state_input_create_game);
+        city = findViewById(R.id.city_input_create_game);
+        address = findViewById(R.id.address_input_create_game);
+        date = findViewById(R.id.date_input_create_game);
+        time = findViewById(R.id.time_input_create_game);
+        contact = findViewById(R.id.contact_input_create_game);
+        message = findViewById(R.id.message_input_create_game);
+        error = findViewById(R.id.error_tv_create_game);
     }
 
     public Game getGame() {
@@ -56,12 +62,16 @@ public class CreateGame extends AppCompatActivity {
     public void createGame(View view) {
         if (validateGame(getGame())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.createGame(getGame(), HomeActivity.token, HomeActivity.teamId);
+            Call<Void> call = apiService.createGame(getGame(), accessToken);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    Toast.makeText(getApplicationContext(), R.string.game_created, Toast.LENGTH_SHORT).show();
+                    if(response.message().contains("expired")) {
+                        refreshToken(HomeActivity.teamId, HomeActivity.refresh);
+                    } else {
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        Toast.makeText(getApplicationContext(), R.string.game_created, Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -73,6 +83,35 @@ public class CreateGame extends AppCompatActivity {
             error.setText(R.string.invalid_info);
         }
 
+    }
+
+    public void insertLoginData(JWTInfo jwtInfo) {
+        dbHelper = new DBHelper(this, null, null, 1);
+        dbHelper.insertLoginData(jwtInfo);
+        dbHelper.close();
+    }
+
+    public void refreshToken(int teamId, String refresh) {
+        RefreshInfo refreshInfo = new RefreshInfo(teamId, refresh);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<JWTInfo> call = apiService.refreshToken(refreshInfo);
+        call.enqueue(new Callback<JWTInfo>() {
+            @Override
+            public void onResponse(Call<JWTInfo> call, Response<JWTInfo> response) {
+                if(response.code() == 401) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    JWTInfo jwtInfo = response.body();
+                    insertLoginData(jwtInfo);
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JWTInfo> call, Throwable t) {
+
+            }
+        });
     }
 
     private boolean validateGame(Game game) {

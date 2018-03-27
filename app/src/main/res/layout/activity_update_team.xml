@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/update_team_wp"
-    tools:context="ballinapp.com.ballinapp.team.UpdateTeam">
+    tools:context="ballinapp.com.ballinapp.team.RegisterTeam">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="@dimen/_125sdp"
-        android:layout_height="@dimen/_125sdp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        android:adjustViewBounds="true"
+        android:layout_height="85dp"
         android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@string/logo"/>
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/logo"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/team_name_tv_register_activity"
@@ -101,6 +101,31 @@
         android:textColor="@android:color/background_light" />
 
     <TextView
+        android:id="@+id/password_register_team_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:text="@string/password_tv"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/team_password_et_register_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
         android:id="@+id/error_tv_update_team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,7 +137,6 @@
         android:textColor="@color/red"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold" />
-
 
     <ImageButton
         android:id="@+id/imageButton"

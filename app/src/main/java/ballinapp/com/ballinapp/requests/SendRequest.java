@@ -8,12 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ballinapp.com.ballinapp.HomeActivity;
+import ballinapp.com.ballinapp.app.HomeActivity;
 import ballinapp.com.ballinapp.R;
 import ballinapp.com.ballinapp.api.ApiClient;
 import ballinapp.com.ballinapp.api.ApiInterface;
+import ballinapp.com.ballinapp.app.LoginActivity;
 import ballinapp.com.ballinapp.data.Request;
-import ballinapp.com.ballinapp.data.Team;
+import ballinapp.com.ballinapp.data.util.JWTInfo;
+import ballinapp.com.ballinapp.data.util.RefreshInfo;
+import ballinapp.com.ballinapp.db.DBHelper;
 import ballinapp.com.ballinapp.team.MyProfile;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,36 +26,33 @@ public class SendRequest extends AppCompatActivity {
 
     EditText state, city, address, date, time, contact, message;
     TextView error;
-    Long id;
+    int id;
+    String accessToken;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_request);
         getSupportActionBar().hide();
+        accessToken = "Bearer " + HomeActivity.accessToken;
 
-        state = (EditText) findViewById(R.id.state_input_send_request);
-        city = (EditText) findViewById(R.id.city_input_send_request);
-        address = (EditText) findViewById(R.id.address_input_send_request);
-        date = (EditText) findViewById(R.id.date_input_send_request);
-        time = (EditText) findViewById(R.id.time_input_send_request);
-        contact = (EditText) findViewById(R.id.contact_input_send_request);
-        message = (EditText) findViewById(R.id.message_input_send_request);
-        error = (TextView) findViewById(R.id.error_tv_send_request);
-        id = getIntent().getExtras().getLong("receiver_id");
+        state = findViewById(R.id.state_input_send_request);
+        city = findViewById(R.id.city_input_send_request);
+        address = findViewById(R.id.address_input_send_request);
+        date = findViewById(R.id.date_input_send_request);
+        time = findViewById(R.id.time_input_send_request);
+        contact = findViewById(R.id.contact_input_send_request);
+        message = findViewById(R.id.message_input_send_request);
+        error = findViewById(R.id.error_tv_send_request);
+        id = getIntent().getExtras().getInt("receiver_id");
     }
 
     public Request getData() {
-        Team senderTeam = new Team();
-        senderTeam.setTeam_id(HomeActivity.teamId);
-
-        Team receiverTeam = new Team();
-        receiverTeam.setTeam_id(id);
-
         Request request = new Request();
 
-        request.setSenderTeamId(senderTeam);
-        request.setReceiverTeamId(receiverTeam);
+        request.setSenderTeamId(HomeActivity.teamId);
+        request.setReceiverTeamId(id);
         request.setState(state.getText().toString());
         request.setCity(city.getText().toString());
         request.setAddress(address.getText().toString());
@@ -67,12 +67,16 @@ public class SendRequest extends AppCompatActivity {
     public void sendRequest(View view) {
         if(validateRequest(getData())) {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<Void> call = apiService.sendRequest(getData(), HomeActivity.token, HomeActivity.teamId);
+            Call<Void> call = apiService.sendRequest(getData(), accessToken);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    Toast.makeText(getApplicationContext(), R.string.request_sent, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MyProfile.class));
+                    if(response.message().contains("expired")) {
+                        refreshToken(HomeActivity.teamId, HomeActivity.refresh);
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.request_sent, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MyProfile.class));
+                    }
                 }
 
                 @Override
@@ -83,6 +87,35 @@ public class SendRequest extends AppCompatActivity {
         } else {
             error.setText(R.string.invalid_info);
         }
+    }
+
+    public void insertLoginData(JWTInfo jwtInfo) {
+        dbHelper = new DBHelper(this, null, null, 1);
+        dbHelper.insertLoginData(jwtInfo);
+        dbHelper.close();
+    }
+
+    public void refreshToken(int teamId, String refresh) {
+        RefreshInfo refreshInfo = new RefreshInfo(teamId, refresh);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<JWTInfo> call = apiService.refreshToken(refreshInfo);
+        call.enqueue(new Callback<JWTInfo>() {
+            @Override
+            public void onResponse(Call<JWTInfo> call, Response<JWTInfo> response) {
+                if(response.code() == 401) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    JWTInfo jwtInfo = response.body();
+                    insertLoginData(jwtInfo);
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JWTInfo> call, Throwable t) {
+
+            }
+        });
     }
 
     private boolean validateRequest(Request request) {
